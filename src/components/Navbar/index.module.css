@@ -5,4 +5,8 @@
     padding: 0 15px;
     /* padding-top: 10px; */
     /* background-color: aqua; */
+    position: sticky;
+    background-color: white;
+    z-index: 10;
+    top: 0;
 }

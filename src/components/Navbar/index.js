@@ -29,7 +29,7 @@ function DashboardNav(params) {
                     <Nav.Link onClick={(e) => {
                         logoutUser();
                     }}>
-                        Logout
+                        <b>Logout</b>
                     </Nav.Link>
                 </Nav.Item>
             </Nav>
