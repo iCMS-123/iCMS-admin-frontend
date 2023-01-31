@@ -179,10 +179,10 @@ function AdminDashboard() {
         setTeacherDetailsModalShow(true);
     }
 
-    // async function terminateAccount(teacher_id) {
-    //     //function to terminate teacher's account
-    //     console.log(teacher_id, 'teacher_id for termination');
-    // }
+    async function terminateAccount(teacher_id) {
+        //function to terminate teacher's account
+        console.log(teacher_id, 'teacher_id for termination');
+    }
 
     return (
         <div className={styles.maincontainer}>
@@ -402,9 +402,9 @@ function AdminDashboard() {
                                     </div>
 
                                 </Modal.Body>
-                                {/* <Modal.Footer>
+                                <Modal.Footer>
                                     <Button variant="dark" onClick={e => terminateAccount(teacherDetailsForModal._id)}>Terminate Account</Button>
-                                </Modal.Footer> */}
+                                </Modal.Footer>
                             </Modal>
                             {/* Modal code ends */}
 
