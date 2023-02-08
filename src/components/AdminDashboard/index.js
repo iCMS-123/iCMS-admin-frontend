@@ -307,11 +307,11 @@ function AdminDashboard() {
                                     <Row>
                                         <Col style={{ display: 'flex', flexDirection: 'column' }}>
                                             <h6>Students</h6>
-                                            <p className='text-muted'>{branchDetailsForModal.students.length}</p>
+                                            <p className='text-muted'>{branchDetailsForModal.students?.length}</p>
                                         </Col>
                                         <Col style={{ display: 'flex', flexDirection: 'column' }}>
                                             <h6>Teachers </h6>
-                                            <p className='text-muted'>{branchDetailsForModal.teachers.length}</p>
+                                            <p className='text-muted'>{branchDetailsForModal.teachers?.length}</p>
                                         </Col>
                                     </Row>
                                     <Col style={{ display: 'flex', flexDirection: 'column' }}>

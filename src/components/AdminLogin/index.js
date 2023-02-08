@@ -19,7 +19,7 @@ function AdminLogin() {
 
 	useEffect(() => {
 		if (userInfo || user) {
-			navigate("/admin");
+			navigate("/admin/dashboard");
 		}
 	}, []);
 
