@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminLogin from './AdminLogin/index'
-import AdminDashboard from './AdminDashboard/index'
+import AdminPortal from './AdminPortal/index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import{BrowserRouter, Routes, Route} from 'react-router-dom'
 
@@ -9,7 +9,7 @@ function Combined(){
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<AdminLogin />} />
-                <Route path='/dashboard' element={<AdminDashboard />} />
+                <Route path='/admin/*' element={<AdminPortal />} />
             </Routes>
         </BrowserRouter>
     )

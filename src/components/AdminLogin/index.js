@@ -19,7 +19,7 @@ function AdminLogin() {
 
 	useEffect(() => {
 		if (userInfo || user) {
-			navigate("/dashboard");
+			navigate("/admin");
 		}
 	}, []);
 
@@ -46,7 +46,7 @@ function AdminLogin() {
 				);
 				setSuccess(true);
 				setuser(data.data);
-                navigate('/dashboard');
+                navigate('/admin');
 			} else {
 				if (data) {
 					seterror(data.message);
