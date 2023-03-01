@@ -64,6 +64,7 @@
     overflow: hidden;
     border: 1px solid #ccc;
     cursor: pointer;
+    min-height: 125px;
 }
 
 .branchCards .gocorner {

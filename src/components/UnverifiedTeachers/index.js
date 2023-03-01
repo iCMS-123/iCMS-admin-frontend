@@ -13,6 +13,7 @@ function UnverifiedTeachers() {
     const navigate = useNavigate();
     const [error, seterror] = useState(null);
     const [success, setSuccess] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(false);
     const [user, setuser] = useState(null);
 
     const localData = localStorage.getItem("iCMSUserInfo");
@@ -32,6 +33,32 @@ function UnverifiedTeachers() {
     const [branchSelected, setBranchSelected] = useState('');
     const [unverifiedTeachersList, setUnverifiedTeachersList] = useState(null);
     const [unverifiedTeachersListCopy, setUnverifiedTeachersListCopy] = useState(null);
+
+    const getUnverifiedTeachersListBranchWise = async () => {
+        try {
+            const { data } = await axios.get(`${url}/api/v1/admin/get-unverified-teacher?branchName=${branchSelected}`);
+            console.log(data, "dataaaaaaaaaaa");
+            if (data && data.success) {
+                if (data.data.teacherList.length) {
+                    setUnverifiedTeachersList(data.data.teacherList);
+                    setUnverifiedTeachersListCopy(data.data.teacherList);
+                }
+                else {
+                    setUnverifiedTeachersList(null);
+                    setUnverifiedTeachersListCopy(null);
+                }
+                console.log(data, "data");
+                setLoadingForFilter(false);
+                // setSuccess(true);
+            }
+        } catch (e) {
+            console.log(e, "e");
+            seterror(e.message);
+            setTimeout(() => seterror(null), 3000);
+        }
+
+        setLoadingForFilter(false);
+    };
 
     useEffect(() => {
         setLoadingForFilter(true);
@@ -53,38 +80,6 @@ function UnverifiedTeachers() {
         };
 
         getBranchList();
-
-        const getUnverifiedTeachersListBranchWise = async () => {
-            try {
-                const { data } = await axios.get(`${url}/api/v1/teacher/get-list?branch=${branchSelected}`);
-
-                if (data && data.success) {
-                    if (data.data.teacherList.length) {
-                        setUnverifiedTeachersList(data.data.teacherList);
-                        setUnverifiedTeachersListCopy(data.data.teacherList);
-                    }
-                    else {
-                        setUnverifiedTeachersList(null);
-                        setUnverifiedTeachersListCopy(null);
-                    }
-                    console.log(data, "data");
-                    setLoadingForFilter(false);
-                    // setSuccess(true);
-                } else {
-                    if (data) {
-                        seterror(data.message);
-                        setTimeout(() => seterror(null), 3000);
-                    } else {
-                        seterror("Unauthorized User");
-                        setTimeout(() => seterror(null), 3000);
-                    }
-                }
-            } catch (e) {
-                console.log(e, "e");
-                seterror("Unauthorized User");
-                setTimeout(() => seterror(null), 3000);
-            }
-        };
 
         getUnverifiedTeachersListBranchWise();
     }, [branchSelected]);
@@ -117,10 +112,30 @@ function UnverifiedTeachers() {
     async function setTeacherVerified(teacher_id) {
         //function to verify teacher's account
         console.log(teacher_id, 'teacher_id for verification');
+
+        try {
+            const { data } = await axios.put(`http://localhost:8002/api/v1/admin/verify-teacher/${teacher_id}`);
+            if (data && data.success) {
+                console.log(data, "verified teacher response");
+                setSuccess(true);
+                setSuccessMessage("Teacher verified successfully!");
+                setTeacherDetailsModalShow(false); getUnverifiedTeachersListBranchWise();
+                setTimeout(() => setSuccess(false), 3000);
+            }
+        } catch (e) {
+            console.log(e, "e");
+            seterror(e.response.data.msg);
+            setTimeout(() => seterror(null), 3000);
+        }
     }
 
     return (
         <>
+            {error && <Message variant={"danger"}>{error}</Message>}
+            {success && (
+                <Message variant={"success"}>{successMessage}</Message>
+            )}
+
             <div id={styles.unverifiedBox}>
                 <h5 style={{ fontWeight: 'bold' }}>Unverified Teachers</h5>
                 {(unverifiedTeachersListCopy == null) && <p className='mt-4'>Currently there are no unverified teachers.</p>}
@@ -156,8 +171,8 @@ function UnverifiedTeachers() {
                                                             >
                                                                 View Details
                                                             </Button>
-                                                            <Button variant="success" size="sm" style={{ width: 'fit-content', marginLeft : '15px' }}
-                                                                onClick={e => setTeacherVerified(index)}
+                                                            <Button variant="success" size="sm" style={{ width: 'fit-content', marginLeft: '15px' }}
+                                                                onClick={e => setTeacherVerified(teacher._id)}
                                                             >
                                                                 <FaCheck />
                                                             </Button>

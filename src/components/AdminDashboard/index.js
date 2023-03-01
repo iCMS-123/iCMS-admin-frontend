@@ -115,6 +115,7 @@ function AdminDashboard() {
 
             if (data && data.success) {
                 setSuccessMessage("Branch created successfully!")
+                console.log(data, "branch creation response");
                 setSuccess(true);
             }
         } catch (e) {
@@ -124,17 +125,16 @@ function AdminDashboard() {
         }
     };
 
-    const submitAssignHODForm = async (e) => {
-        e.preventDefault();
+    const submitAssignHODForm = async () => {
         try {
-            branchDetailsModalShow(false);
             console.log(branchNameForHodAssign, hodIdForHodAssign);
-            const { data } = await axios.post(`${url}/api/v1/admin/create-branch`, {
-                name: branchNameForHodAssign,
-                hodRef: hodIdForHodAssign
+            const { data } = await axios.post(`${url}/api/v1/admin/assign-hod`, {
+                branchName: branchNameForHodAssign,
+                id: hodIdForHodAssign
             });
-
+            console.log(data, "ddaattaa");
             if (data && data.success) {
+                setBranchDetailsModalShow(false)
                 setSuccessMessage("HOD assigned successfully!")
                 setSuccess(true);
             }
@@ -208,6 +208,7 @@ function AdminDashboard() {
     async function branchDetailsModalTrigger(idx) {
         console.log('branchDetailsModalTrigger');
         console.log(branchList, "branchList");
+        setBranchName(branchList[idx].name);
         setBranchDetailsForModal(branchList[idx]);
         setBranchNameForHodAssign(branchList[idx].name);
         setBranchDetailsModalShow(true);
@@ -238,13 +239,20 @@ function AdminDashboard() {
                                 <Card className={styles.branchCards} onClick={e => branchDetailsModalTrigger(index)}>
                                     <Card.Body>
                                         <Card.Title>{branch.name.toUpperCase()}</Card.Title>
-                                        <div style={{ display: 'flex' }}>
-                                            <Image src={branch.hodRef.profileImg} roundedCircle={true} style={{ height: "40px", width: '40px' }} className="me-3" />
-                                            <span style={{ display: 'flex', flexDirection: 'column' }}>
-                                                <b>{branch.hodRef.firstName + " " + branch.hodRef.lastName}</b>
-                                                <b className="mb-2 text-muted">HOD </b>
-                                            </span>
-                                        </div>
+                                        {branch.hodRef &&
+                                            <div style={{ display: 'flex' }}>
+                                                <Image src={branch?.hodRef?.profileImg} roundedCircle={true} style={{ height: "40px", width: '40px' }} className="me-3" />
+                                                <span style={{ display: 'flex', flexDirection: 'column' }}>
+                                                    <b>{branch?.hodRef?.firstName + " " + branch?.hodRef?.lastName}</b>
+                                                    <b className="mb-2 text-muted">HOD </b>
+                                                </span>
+                                            </div>
+                                        }
+                                        {!branch.hodRef &&
+                                            <div style={{ display: 'flex' }}>
+                                                <h6 className='pt-3'>No HOD assigned yet!</h6>
+                                            </div>
+                                        }
                                         {/* <Card.Text>
                                             Some quick example text to build on the card title and make up the
                                             bulk of the card's content.
@@ -277,22 +285,30 @@ function AdminDashboard() {
                                         HOD
                                     </Badge>
                                 </h5>
-                                <Image src={branchDetailsForModal.hodRef?.profileImg} roundedCircle={true} style={{ height: "100px", width: '100px' }} className="mb-3" />
-                                <h5>{branchDetailsForModal.hodRef?.firstName + " " + branchDetailsForModal.hodRef?.lastName}</h5>
-
-
-                                {branchDetailsForModal.hodRef?.isVerified &&
-                                    <p>VERIFIED
-                                        <FaUserCheck style={{ marginLeft: '10px', color: 'green' }} />
-                                    </p>
+                                {!branchDetailsForModal.hodRef &&
+                                    <div style={{ display: 'flex' }}>
+                                        <h6 className='pt-3'>No HOD assigned yet!</h6>
+                                    </div>
                                 }
-                                {!branchDetailsForModal.hodRef?.isVerified &&
-                                    <p>NOT VERIFIED
-                                        <FaUserTimes style={{ marginLeft: '10px', color: 'red' }} />
-                                    </p>
+                                {branchDetailsForModal.hodRef &&
+                                    <>
+                                        <Image src={branchDetailsForModal.hodRef?.profileImg} roundedCircle={true} style={{ height: "100px", width: '100px' }} className="mb-3" />
+                                        <h5>{branchDetailsForModal.hodRef?.firstName + " " + branchDetailsForModal.hodRef?.lastName}</h5>
+
+
+                                        {branchDetailsForModal.hodRef?.isVerified &&
+                                            <p>VERIFIED
+                                                <FaUserCheck style={{ marginLeft: '10px', color: 'green' }} />
+                                            </p>
+                                        }
+                                        {!branchDetailsForModal.hodRef?.isVerified &&
+                                            <p>NOT VERIFIED
+                                                <FaUserTimes style={{ marginLeft: '10px', color: 'red' }} />
+                                            </p>
+                                        }
+
+                                    </>
                                 }
-
-
                             </div>
                             <div id='right-section' style={{ width: '70%', padding: '10px 20px' }}>
                                 <h6>Information</h6>
@@ -317,12 +333,12 @@ function AdminDashboard() {
                                     <Col style={{ display: 'flex', flexDirection: 'column' }}>
                                         <h6>Update / Assign HOD</h6>
 
-                                        <Form onSubmit={ e => submitCreateBranchForm }>
+                                        <Form onSubmit={e => submitCreateBranchForm}>
 
                                             {(hodList != null && hodList != '') ?
                                                 (<Form.Group className="mb-3">
                                                     <Form.Label htmlFor="selectHod">Choose Head of Department</Form.Label>
-                                                    <Form.Select id="selectHod" onChange={(e) => { setHodId(e.target.value) }}>
+                                                    <Form.Select id="selectHod" onChange={(e) => {setBranchNameForHodAssign(branchDetailsForModal.name); setHodIdForHodAssign(e.target.value) }}>
                                                         <option value=''>Select HOD</option>
                                                         {
                                                             hodList.map((option, index) => (
@@ -338,7 +354,7 @@ function AdminDashboard() {
                                             {loading ? (
                                                 <Loader1></Loader1>
                                             ) : ('')}
-                                            <Button variant="dark" onClick={e => terminateAccount(teacherDetailsForModal._id)}>Assign HOD</Button>
+                                            <Button variant="dark" onClick={e => submitAssignHODForm()}>Assign HOD</Button>
                                         </Form>
 
                                     </Col>
@@ -355,7 +371,7 @@ function AdminDashboard() {
                 </Modal>
                 {/* Modal (for branch details) code ends */}
 
-                <Button key={true} className="me-2 mt-2 mb-2" onClick={() => handleShow()} variant="success">Add New Branch</Button>
+                <Button key={true} className="me-2 mt-3 mb-2" onClick={() => handleShow()} variant="success">Add New Branch</Button>
 
                 {/* Modal code starts */}
                 <Modal show={showModal} fullscreen={true} onHide={() => setModalShow(false)}>
@@ -370,7 +386,7 @@ function AdminDashboard() {
                                 </Form.Label>
                                 <Form.Select id="selectBranch" onChange={(e) => { setBranchName(e.target.value) }}>
                                     <option value='it'>Information Technology</option>
-                                    <option value='cs'>Computer Science Engineering</option>
+                                    <option value='cse'>Computer Science Engineering</option>
                                     <option value='ce'>Civil Engineering</option>
                                     <option value='me'>Mechanical Engineering</option>
                                     <option value='ee'>Electrical Engineering</option>
