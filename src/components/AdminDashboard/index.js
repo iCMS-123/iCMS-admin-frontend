@@ -116,6 +116,7 @@ function AdminDashboard() {
             if (data && data.success) {
                 setSuccessMessage("Branch created successfully!")
                 console.log(data, "branch creation response");
+                setBranchList([...branchList, data.data.branchData])
                 setSuccess(true);
             }
         } catch (e) {
@@ -135,6 +136,8 @@ function AdminDashboard() {
             console.log(data, "ddaattaa");
             if (data && data.success) {
                 setBranchDetailsModalShow(false)
+                let otherBranches = branchList.filter((item) => item.name !== data.data.branchData.name);
+                setBranchList([...otherBranches, data.data.branchData])
                 setSuccessMessage("HOD assigned successfully!")
                 setSuccess(true);
             }
