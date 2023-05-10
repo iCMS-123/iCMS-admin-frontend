@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AdminNav from './Navbar/index'
 import AdminSidebar from './Sidebar/index'
 import AdminDashboard from '../AdminDashboard/index'
+import AdminIssues from '../AdminIssues/index'
 import UnverifiedTeachers from '../UnverifiedTeachers/index'
 
 function AdminPortal() {
@@ -23,6 +24,7 @@ function AdminPortal() {
                 <Routes>
                     <Route path='dashboard' element={<AdminDashboard />} />
                     <Route path='unverified-teachers' element={<UnverifiedTeachers />} />
+                    <Route path='issues' element={<AdminIssues />} />
                 </Routes>
             </div>
         </div>

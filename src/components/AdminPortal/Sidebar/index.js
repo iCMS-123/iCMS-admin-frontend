@@ -14,6 +14,9 @@ function Sidebar() {
                 <Link to="unverified-teachers" style={{ textDecoration: "none", color: "black", marginBottom: '30px' }}>
                     <h5>Unverified Teachers</h5>
                 </Link>
+                <Link to="issues" style={{ textDecoration: "none", color: "black", marginBottom: '30px' }}>
+                    <h5>Issues</h5>
+                </Link>
             </div>
         </div>
     )
