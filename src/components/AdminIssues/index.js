@@ -57,16 +57,11 @@ function AdminIssues() {
     const getClassroomData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8002/api/v1/section/get-section-data/${currUser}`
+          `http://localhost:8002/api/v1/admin/get-issues`
         );
-
+          console.log(data);
         if (data && data.success) {
-          //   setSectionData(data.data);
-          //   setStudentsList(data.data.sectionStudents);
-          //   setStudentsListCopy(data.data.sectionStudents);
-          //   setVerifiedStudentsList(data.data.verifiedStudents);
-          //   setUnverifiedStudentsList(data.data.unverifiedStudents);
-          let allIssues = data.data.sectionIssues;
+          let allIssues = data.data;
           setIssuesData(allIssues);
           setActiveIssues(allIssues.filter((issue) => !issue.isAttended));
           setResolvedIssues(allIssues.filter((issue) => issue.isAttended));
@@ -82,7 +77,7 @@ function AdminIssues() {
   async function handleIssueStatusModal(decision) {
     try {
       const { data } = await axios.put(
-        `http://localhost:8002/api/v1/section/resolve-issue/${userID}`,
+        `http://localhost:8002/api/v1/admin/resolve-issue`,
         {
           issueId: issueModalData._id,
           status: decision,
