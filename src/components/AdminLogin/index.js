@@ -46,7 +46,7 @@ function AdminLogin() {
 				);
 				setSuccess(true);
 				setuser(data.data);
-                navigate('/admin');
+                navigate('/admin/dashboard');
 			} else {
 				if (data) {
 					seterror(data.message);
