@@ -20,8 +20,6 @@ import parse from "html-react-parser";
 import Message from "../Message/index";
 
 function AdminIssues() {
-  let currUser = 1234; // to be fixed
-  let userID = 1234; // to be fixed
   const navigate = useNavigate();
   const [error, seterror] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -36,9 +34,9 @@ function AdminIssues() {
   const handleIssueModalClose = () => setShowIssueModal(false);
   const handleIssueModalShow = () => setShowIssueModal(true);
   const localData = localStorage.getItem("iCMSUserInfo");
-  console.log(JSON.parse(localData), 'whole localstorage');
+  // console.log(JSON.parse(localData), 'whole localstorage');
   const userInfo = localData ? JSON.parse(localData) : null;
-  console.log(userInfo);
+  // console.log(userInfo);
 
   function handleIssueModal(index) {
     const target = issuesData[index];
@@ -65,7 +63,6 @@ function AdminIssues() {
           setIssuesData(allIssues);
           setActiveIssues(allIssues.filter((issue) => !issue.isAttended));
           setResolvedIssues(allIssues.filter((issue) => issue.isAttended));
-          // console.log(data, "Classroom Data");
         }
       } catch (e) {
         console.log(e, "e");
@@ -83,11 +80,17 @@ function AdminIssues() {
           status: decision,
         }
       );
+      console.log(data, "data")
       if (data.success) {
         if (decision === true) {
           setSuccess(true);
           setSuccessMessage("Issue Resolved!");
           setTimeout(() => setSuccess(false), 5000);
+          let allIssues = data.data.issues;
+          console.log(allIssues, "all issues")
+          // setIssuesData(allIssues);
+          // setActiveIssues(allIssues.filter((issue) => !issue.isAttended))
+          // setResolvedIssues(allIssues.filter((issue) => issue.isAttended))
         } else {
           seterror("Issue Rejected!");
           setTimeout(() => seterror(null), 3000);
