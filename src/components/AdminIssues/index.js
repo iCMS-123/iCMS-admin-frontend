@@ -38,10 +38,12 @@ function AdminIssues() {
   const userInfo = localData ? JSON.parse(localData) : null;
   // console.log(userInfo);
 
-  function handleIssueModal(index) {
-    const target = issuesData[index];
-    console.log(target);
-    setIssueModalData(target);
+  function handleIssueModal(index, isActive) {
+    if(isActive){
+      setIssueModalData(activeIssues[index]);
+    }else{
+      setIssueModalData(resolvedIssues[index]);
+    }
     handleIssueModalShow(true);
   }
 
@@ -57,7 +59,6 @@ function AdminIssues() {
         const { data } = await axios.get(
           `http://localhost:8002/api/v1/admin/get-issues`
         );
-          console.log(data);
         if (data && data.success) {
           let allIssues = data.data;
           setIssuesData(allIssues);
@@ -82,15 +83,17 @@ function AdminIssues() {
       );
       console.log(data, "data")
       if (data.success) {
+        let activeIssuesCopy = [...activeIssues];
+        let resolvedIssuesCopy = [...resolvedIssues];
+        activeIssuesCopy = activeIssuesCopy.filter((issue,idx)=> issue!=issueModalData);
+        setActiveIssues(activeIssuesCopy);
+        resolvedIssuesCopy.push(issueModalData);
+        setResolvedIssues(resolvedIssuesCopy);
+        setIssuesData([...activeIssuesCopy,...resolvedIssuesCopy])
         if (decision === true) {
-          setSuccess(true);
           setSuccessMessage("Issue Resolved!");
+          setSuccess(true);
           setTimeout(() => setSuccess(false), 5000);
-          let allIssues = data.data.issues;
-          console.log(allIssues, "all issues")
-          // setIssuesData(allIssues);
-          // setActiveIssues(allIssues.filter((issue) => !issue.isAttended))
-          // setResolvedIssues(allIssues.filter((issue) => issue.isAttended))
         } else {
           seterror("Issue Rejected!");
           setTimeout(() => seterror(null), 3000);
@@ -164,7 +167,7 @@ function AdminIssues() {
                       href="#"
                       className="btn btn-primary"
                       onClick={() => {
-                        handleIssueModal(idx);
+                        handleIssueModal(idx,1);
                       }}
                     >
                       View Issue
@@ -197,7 +200,7 @@ function AdminIssues() {
                 Description : {issueModalData.issueMsg || "Issue Description"}
               </p>
             </Modal.Body>
-            {!issueModalData.isAttended && (
+            {!issueModalData?.isAttended && (
               <Modal.Footer
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
@@ -279,7 +282,7 @@ function AdminIssues() {
                       href="#"
                       className="btn btn-primary"
                       onClick={() => {
-                        handleIssueModal(idx);
+                        handleIssueModal(idx,0);
                       }}
                     >
                       View Issue
