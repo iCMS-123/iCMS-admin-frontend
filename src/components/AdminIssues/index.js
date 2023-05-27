@@ -61,6 +61,450 @@ function AdminIssues() {
         );
         if (data && data.success) {
           let allIssues = data.data;
+          allIssues = [
+            {
+                "_id": "6431a29cef87be1f9bda56c6",
+                "issueMsg": "One sample issue msg text3",
+                "issueSubmittedByStudent": {
+                    "_id": "6419ef7901e5b63cf6c04a0d",
+                    "firstName": "Test",
+                    "lastName": "Student",
+                    "email": "aman@student",
+                    "admissionNumber": "PtaNhi",
+                    "universityRollNumber": "1900910130017",
+                    "collegeIdCard": "https://123.png",
+                    "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+                    "branchName": "it",
+                    "year": "1",
+                    "sectionRef": "64006b64a96106bdcef99406",
+                    "isVerifed": false,
+                    "sampleImages": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+                    ],
+                    "createdAt": "2023-03-21T17:55:05.105Z",
+                    "updatedAt": "2023-03-28T15:05:17.446Z",
+                    "__v": 4,
+                    "isVerified": true
+                },
+                "priority": "1",
+                "status": true,
+                "__v": 0,
+                "isAttended": false
+            },
+            {
+                "_id": "6431a21af2b28bb00577a38e",
+                "issueMsg": "One sample issue msg text",
+                "issueSubmittedByStudent": {
+                    "_id": "6419ef7901e5b63cf6c04a0d",
+                    "firstName": "Test",
+                    "lastName": "Student",
+                    "email": "aman@student",
+                    "admissionNumber": "PtaNhi",
+                    "universityRollNumber": "1900910130017",
+                    "collegeIdCard": "https://123.png",
+                    "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+                    "branchName": "it",
+                    "year": "1",
+                    "sectionRef": "64006b64a96106bdcef99406",
+                    "isVerifed": false,
+                    "sampleImages": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+                    ],
+                    "createdAt": "2023-03-21T17:55:05.105Z",
+                    "updatedAt": "2023-03-28T15:05:17.446Z",
+                    "__v": 4,
+                    "isVerified": true
+                },
+                "priority": "1",
+                "status": true,
+                "__v": 0,
+                "isAttended": false
+            },
+            {
+                "_id": "64551da60827f0fc1cd0587b",
+                "issueMsg": "One sample issue msg text3",
+                "issueSubmittedByStudent": {
+                    "_id": "6419ef7901e5b63cf6c04a0d",
+                    "firstName": "Test",
+                    "lastName": "Student",
+                    "email": "aman@student",
+                    "admissionNumber": "PtaNhi",
+                    "universityRollNumber": "1900910130017",
+                    "collegeIdCard": "https://123.png",
+                    "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+                    "branchName": "it",
+                    "year": "1",
+                    "sectionRef": "64006b64a96106bdcef99406",
+                    "isVerifed": false,
+                    "sampleImages": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+                    ],
+                    "createdAt": "2023-03-21T17:55:05.105Z",
+                    "updatedAt": "2023-03-28T15:05:17.446Z",
+                    "__v": 4,
+                    "isVerified": true
+                },
+                "priority": "2",
+                "status": true,
+                "title": "",
+                "isAttended": false,
+                "__v": 0
+            },
+            {
+                "_id": "64551d760827f0fc1cd05875",
+                "issueMsg": "One sample issue msg text3",
+                "issueSubmittedByStudent": {
+                    "_id": "6419ef7901e5b63cf6c04a0d",
+                    "firstName": "Test",
+                    "lastName": "Student",
+                    "email": "aman@student",
+                    "admissionNumber": "PtaNhi",
+                    "universityRollNumber": "1900910130017",
+                    "collegeIdCard": "https://123.png",
+                    "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+                    "branchName": "it",
+                    "year": "1",
+                    "sectionRef": "64006b64a96106bdcef99406",
+                    "isVerifed": false,
+                    "sampleImages": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+                    ],
+                    "createdAt": "2023-03-21T17:55:05.105Z",
+                    "updatedAt": "2023-03-28T15:05:17.446Z",
+                    "__v": 4,
+                    "isVerified": true
+                },
+                "priority": "1",
+                "status": true,
+                "title": "",
+                "isAttended": false,
+                "__v": 0
+            },
+            {
+                "_id": "6431199426e589dac4316874",
+                "issueMsg": "Tech Issue",
+                "issueSubmittedByStudent": {
+                    "_id": "6419ef7901e5b63cf6c04a0d",
+                    "firstName": "Test",
+                    "lastName": "Student",
+                    "email": "aman@student",
+                    "admissionNumber": "PtaNhi",
+                    "universityRollNumber": "1900910130017",
+                    "collegeIdCard": "https://123.png",
+                    "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+                    "branchName": "it",
+                    "year": "1",
+                    "sectionRef": "64006b64a96106bdcef99406",
+                    "isVerifed": false,
+                    "sampleImages": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+                    ],
+                    "createdAt": "2023-03-21T17:55:05.105Z",
+                    "updatedAt": "2023-03-28T15:05:17.446Z",
+                    "__v": 4,
+                    "isVerified": true
+                },
+                "priority": "1",
+                "status": true,
+                "__v": 0,
+                "isAttended": false
+            },
+            {
+                "_id": "6431a227f2b28bb00577a391",
+                "issueMsg": "One sample issue msg text2",
+                "issueSubmittedByStudent": {
+                    "_id": "6419ef7901e5b63cf6c04a0d",
+                    "firstName": "Test",
+                    "lastName": "Student",
+                    "email": "aman@student",
+                    "admissionNumber": "PtaNhi",
+                    "universityRollNumber": "1900910130017",
+                    "collegeIdCard": "https://123.png",
+                    "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+                    "branchName": "it",
+                    "year": "1",
+                    "sectionRef": "64006b64a96106bdcef99406",
+                    "isVerifed": false,
+                    "sampleImages": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+                    ],
+                    "createdAt": "2023-03-21T17:55:05.105Z",
+                    "updatedAt": "2023-03-28T15:05:17.446Z",
+                    "__v": 4,
+                    "isVerified": true
+                },
+                "priority": "1",
+                "status": true,
+                "__v": 0,
+                "isAttended": false
+            },
+            {
+                "_id": "6470a3cd2e0f29799c37a2f1",
+                "issueMsg": "One sample issue msg text admin",
+                "issueSubmittedByStudent": {
+                    "_id": "6419ef7901e5b63cf6c04a0d",
+                    "firstName": "Test",
+                    "lastName": "Student",
+                    "email": "aman@student",
+                    "admissionNumber": "PtaNhi",
+                    "universityRollNumber": "1900910130017",
+                    "collegeIdCard": "https://123.png",
+                    "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+                    "branchName": "it",
+                    "year": "1",
+                    "sectionRef": "64006b64a96106bdcef99406",
+                    "isVerifed": false,
+                    "sampleImages": [
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+                        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+                    ],
+                    "createdAt": "2023-03-21T17:55:05.105Z",
+                    "updatedAt": "2023-03-28T15:05:17.446Z",
+                    "__v": 4,
+                    "isVerified": true
+                },
+                "priority": "1",
+                "status": true,
+                "title": "",
+                "isAttended": false,
+                "__v": 0
+            },
+            
+    {
+      "_id": "6431a29cef87be1f9bda56c6",
+      "issueMsg": "One sample issue msg text3",
+      "issueSubmittedByStudent": {
+          "_id": "6419ef7901e5b63cf6c04a0d",
+          "firstName": "Test",
+          "lastName": "Student",
+          "email": "aman@student",
+          "admissionNumber": "PtaNhi",
+          "universityRollNumber": "1900910130017",
+          "collegeIdCard": "https://123.png",
+          "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+          "branchName": "it",
+          "year": "1",
+          "sectionRef": "64006b64a96106bdcef99406",
+          "isVerifed": false,
+          "sampleImages": [
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+          ],
+          "createdAt": "2023-03-21T17:55:05.105Z",
+          "updatedAt": "2023-03-28T15:05:17.446Z",
+          "__v": 4,
+          "isVerified": true
+      },
+      "priority": "1",
+      "status": true,
+      "__v": 0,
+      "isAttended": true
+  },
+  {
+      "_id": "6431a21af2b28bb00577a38e",
+      "issueMsg": "One sample issue msg text",
+      "issueSubmittedByStudent": {
+          "_id": "6419ef7901e5b63cf6c04a0d",
+          "firstName": "Test",
+          "lastName": "Student",
+          "email": "aman@student",
+          "admissionNumber": "PtaNhi",
+          "universityRollNumber": "1900910130017",
+          "collegeIdCard": "https://123.png",
+          "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+          "branchName": "it",
+          "year": "1",
+          "sectionRef": "64006b64a96106bdcef99406",
+          "isVerifed": false,
+          "sampleImages": [
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+          ],
+          "createdAt": "2023-03-21T17:55:05.105Z",
+          "updatedAt": "2023-03-28T15:05:17.446Z",
+          "__v": 4,
+          "isVerified": true
+      },
+      "priority": "1",
+      "status": true,
+      "__v": 0,
+      "isAttended": true
+  },
+  {
+      "_id": "64551da60827f0fc1cd0587b",
+      "issueMsg": "One sample issue msg text3",
+      "issueSubmittedByStudent": {
+          "_id": "6419ef7901e5b63cf6c04a0d",
+          "firstName": "Test",
+          "lastName": "Student",
+          "email": "aman@student",
+          "admissionNumber": "PtaNhi",
+          "universityRollNumber": "1900910130017",
+          "collegeIdCard": "https://123.png",
+          "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+          "branchName": "it",
+          "year": "1",
+          "sectionRef": "64006b64a96106bdcef99406",
+          "isVerifed": false,
+          "sampleImages": [
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+          ],
+          "createdAt": "2023-03-21T17:55:05.105Z",
+          "updatedAt": "2023-03-28T15:05:17.446Z",
+          "__v": 4,
+          "isVerified": true
+      },
+      "priority": "2",
+      "status": true,
+      "title": "",
+      "isAttended": true,
+      "__v": 0
+  },
+  {
+      "_id": "64551d760827f0fc1cd05875",
+      "issueMsg": "One sample issue msg text3",
+      "issueSubmittedByStudent": {
+          "_id": "6419ef7901e5b63cf6c04a0d",
+          "firstName": "Test",
+          "lastName": "Student",
+          "email": "aman@student",
+          "admissionNumber": "PtaNhi",
+          "universityRollNumber": "1900910130017",
+          "collegeIdCard": "https://123.png",
+          "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+          "branchName": "it",
+          "year": "1",
+          "sectionRef": "64006b64a96106bdcef99406",
+          "isVerifed": false,
+          "sampleImages": [
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+          ],
+          "createdAt": "2023-03-21T17:55:05.105Z",
+          "updatedAt": "2023-03-28T15:05:17.446Z",
+          "__v": 4,
+          "isVerified": true
+      },
+      "priority": "1",
+      "status": true,
+      "title": "",
+      "isAttended": true,
+      "__v": 0
+  },
+  {
+      "_id": "6431199426e589dac4316874",
+      "issueMsg": "Tech Issue",
+      "issueSubmittedByStudent": {
+          "_id": "6419ef7901e5b63cf6c04a0d",
+          "firstName": "Test",
+          "lastName": "Student",
+          "email": "aman@student",
+          "admissionNumber": "PtaNhi",
+          "universityRollNumber": "1900910130017",
+          "collegeIdCard": "https://123.png",
+          "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+          "branchName": "it",
+          "year": "1",
+          "sectionRef": "64006b64a96106bdcef99406",
+          "isVerifed": false,
+          "sampleImages": [
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+          ],
+          "createdAt": "2023-03-21T17:55:05.105Z",
+          "updatedAt": "2023-03-28T15:05:17.446Z",
+          "__v": 4,
+          "isVerified": true
+      },
+      "priority": "1",
+      "status": true,
+      "__v": 0,
+      "isAttended": true
+  },
+  {
+      "_id": "6431a227f2b28bb00577a391",
+      "issueMsg": "One sample issue msg text2",
+      "issueSubmittedByStudent": {
+          "_id": "6419ef7901e5b63cf6c04a0d",
+          "firstName": "Test",
+          "lastName": "Student",
+          "email": "aman@student",
+          "admissionNumber": "PtaNhi",
+          "universityRollNumber": "1900910130017",
+          "collegeIdCard": "https://123.png",
+          "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+          "branchName": "it",
+          "year": "1",
+          "sectionRef": "64006b64a96106bdcef99406",
+          "isVerifed": false,
+          "sampleImages": [
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+          ],
+          "createdAt": "2023-03-21T17:55:05.105Z",
+          "updatedAt": "2023-03-28T15:05:17.446Z",
+          "__v": 4,
+          "isVerified": true
+      },
+      "priority": "1",
+      "status": true,
+      "__v": 0,
+      "isAttended": true
+  },
+  {
+      "_id": "6470a3cd2e0f29799c37a2f1",
+      "issueMsg": "One sample issue msg text admin",
+      "issueSubmittedByStudent": {
+          "_id": "6419ef7901e5b63cf6c04a0d",
+          "firstName": "Test",
+          "lastName": "Student",
+          "email": "aman@student",
+          "admissionNumber": "PtaNhi",
+          "universityRollNumber": "1900910130017",
+          "collegeIdCard": "https://123.png",
+          "profileImg": "https://res.cloudinary.com/abhistrike/image/upload/v1626953029/avatar-370-456322_wdwimj.png",
+          "branchName": "it",
+          "year": "1",
+          "sectionRef": "64006b64a96106bdcef99406",
+          "isVerifed": false,
+          "sampleImages": [
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC",
+              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/rohitsharmaap-three_four.jpg?VersionId=iDU9qPYOWaPFhtukjeEfC66IPbAeDjBC"
+          ],
+          "createdAt": "2023-03-21T17:55:05.105Z",
+          "updatedAt": "2023-03-28T15:05:17.446Z",
+          "__v": 4,
+          "isVerified": true
+      },
+      "priority": "1",
+      "status": true,
+      "title": "",
+      "isAttended": true,
+      "__v": 0
+  }
+
+        ]
           setIssuesData(allIssues);
           setActiveIssues(allIssues.filter((issue) => !issue.isAttended));
           setResolvedIssues(allIssues.filter((issue) => issue.isAttended));
@@ -89,7 +533,7 @@ function AdminIssues() {
         setActiveIssues(activeIssuesCopy);
         resolvedIssuesCopy.push(issueModalData);
         setResolvedIssues(resolvedIssuesCopy);
-        setIssuesData([...activeIssuesCopy,...resolvedIssuesCopy])
+        // setIssuesData([...activeIssuesCopy,...resolvedIssuesCopy])
         if (decision === true) {
           setSuccessMessage("Issue Resolved!");
           setSuccess(true);
@@ -116,11 +560,11 @@ function AdminIssues() {
         {/* branch fetch logic will come here */}
         <h5 style={{ fontWeight: "bold" }}>Active Issues</h5>
         <section className="active-issues-section">
-          <div className="active-issues-container">
+          <div className={styles['active-issues-container']}>
             {activeIssues?.length < 1 && <p>No active issues, Hurray!</p>}
             {activeIssues?.map((issue, idx) => {
               return (
-                <div key={idx} className="card issue-card">
+                <div key={idx} className={`card ${styles['issue-card']}`}>
                   <div className="card-body">
                     <Badge
                       style={{ float: "right" }}
@@ -226,14 +670,14 @@ function AdminIssues() {
         </section>
         {/* Resolved issues */}
         <h5>Resolved Issues</h5>
-        <section className="active-issues-section">
-          <div className="active-issues-container">
+        <section className="resolved-issues-section">
+          <div className={styles["resolved-issues-container"]}>
             {resolvedIssues?.length < 1 && (
               <p>No resolved issue, checkout active issues</p>
             )}
             {resolvedIssues?.map((issue, idx) => {
               return (
-                <div key={idx} className="card issue-card">
+                <div key={idx} className={`card ${styles['issue-card']}`}>
                   <div className="card-body">
                     <div className="d-flex justify-content-between">
                       <Badge bg="success">Resolved</Badge>
