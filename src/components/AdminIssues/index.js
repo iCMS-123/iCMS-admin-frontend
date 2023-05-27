@@ -225,7 +225,7 @@ function AdminIssues() {
           </Modal>
         </section>
         {/* Resolved issues */}
-        <h5>Resolved Issues</h5>
+        <h5 style={{ fontWeight: "bold" }}>Resolved Issues</h5>
         <section className="resolved-issues-section">
           <div className={styles["resolved-issues-container"]}>
             {resolvedIssues?.length < 1 && (
