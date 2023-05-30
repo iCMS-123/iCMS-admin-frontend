@@ -256,7 +256,7 @@ function UnverifiedTeachers() {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="success" onClick={e => setTeacherVerified(teacherDetailsForModal._id)}>Verify Account</Button>
-                                <Button variant="dark" onClick={e => terminateAccount(teacherDetailsForModal._id)}>Terminate Account</Button>
+                                <Button variant="dark" disabled onClick={e => terminateAccount(teacherDetailsForModal._id)}>Terminate Account</Button>
                             </Modal.Footer>
                         </Modal>
                         {/* Modal code ends */}

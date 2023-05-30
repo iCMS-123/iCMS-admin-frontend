@@ -544,7 +544,7 @@ function AdminDashboard() {
 
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="dark" onClick={e => terminateAccount(teacherDetailsForModal._id)}>Terminate Account</Button>
+                                <Button variant="dark" disabled onClick={e => terminateAccount(teacherDetailsForModal._id)}>Terminate Account</Button>
                             </Modal.Footer>
                         </Modal>
                         {/* Modal code ends */}
