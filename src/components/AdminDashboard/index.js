@@ -239,7 +239,7 @@ function AdminDashboard() {
 
                         branchList.map((branch, index) => (
                             <Col>
-                                <Card className={styles.branchCards} onClick={e => branchDetailsModalTrigger(index)}>
+                                <Card key={index} className={styles.branchCards} onClick={e => branchDetailsModalTrigger(index)}>
                                     <Card.Body>
                                         <Card.Title>{branch.name.toUpperCase()}</Card.Title>
                                         {branch.hodRef &&

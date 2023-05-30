@@ -20,8 +20,6 @@ import parse from "html-react-parser";
 import Message from "../Message/index";
 
 function AdminIssues() {
-  let currUser = 1234; // to be fixed
-  let userID = 1234; // to be fixed
   const navigate = useNavigate();
   const [error, seterror] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -36,14 +34,16 @@ function AdminIssues() {
   const handleIssueModalClose = () => setShowIssueModal(false);
   const handleIssueModalShow = () => setShowIssueModal(true);
   const localData = localStorage.getItem("iCMSUserInfo");
-  console.log(JSON.parse(localData), 'whole localstorage');
+  // console.log(JSON.parse(localData), 'whole localstorage');
   const userInfo = localData ? JSON.parse(localData) : null;
-  console.log(userInfo);
+  // console.log(userInfo);
 
-  function handleIssueModal(index) {
-    const target = issuesData[index];
-    console.log(target);
-    setIssueModalData(target);
+  function handleIssueModal(index, isActive) {
+    if(isActive){
+      setIssueModalData(activeIssues[index]);
+    }else{
+      setIssueModalData(resolvedIssues[index]);
+    }
     handleIssueModalShow(true);
   }
 
@@ -59,13 +59,11 @@ function AdminIssues() {
         const { data } = await axios.get(
           `http://localhost:8002/api/v1/admin/get-issues`
         );
-          console.log(data);
         if (data && data.success) {
           let allIssues = data.data;
           setIssuesData(allIssues);
           setActiveIssues(allIssues.filter((issue) => !issue.isAttended));
           setResolvedIssues(allIssues.filter((issue) => issue.isAttended));
-          // console.log(data, "Classroom Data");
         }
       } catch (e) {
         console.log(e, "e");
@@ -83,10 +81,18 @@ function AdminIssues() {
           status: decision,
         }
       );
+      console.log(data, "data")
       if (data.success) {
+        let activeIssuesCopy = [...activeIssues];
+        let resolvedIssuesCopy = [...resolvedIssues];
+        activeIssuesCopy = activeIssuesCopy.filter((issue,idx)=> issue!=issueModalData);
+        setActiveIssues(activeIssuesCopy);
+        resolvedIssuesCopy.push(issueModalData);
+        setResolvedIssues(resolvedIssuesCopy);
+        // setIssuesData([...activeIssuesCopy,...resolvedIssuesCopy])
         if (decision === true) {
-          setSuccess(true);
           setSuccessMessage("Issue Resolved!");
+          setSuccess(true);
           setTimeout(() => setSuccess(false), 5000);
         } else {
           seterror("Issue Rejected!");
@@ -110,11 +116,11 @@ function AdminIssues() {
         {/* branch fetch logic will come here */}
         <h5 style={{ fontWeight: "bold" }}>Active Issues</h5>
         <section className="active-issues-section">
-          <div className="active-issues-container">
+          <div className={styles['active-issues-container']}>
             {activeIssues?.length < 1 && <p>No active issues, Hurray!</p>}
             {activeIssues?.map((issue, idx) => {
               return (
-                <div key={idx} className="card issue-card">
+                <div key={idx} className={`card ${styles['issue-card']}`}>
                   <div className="card-body">
                     <Badge
                       style={{ float: "right" }}
@@ -161,7 +167,7 @@ function AdminIssues() {
                       href="#"
                       className="btn btn-primary"
                       onClick={() => {
-                        handleIssueModal(idx);
+                        handleIssueModal(idx,1);
                       }}
                     >
                       View Issue
@@ -194,7 +200,7 @@ function AdminIssues() {
                 Description : {issueModalData.issueMsg || "Issue Description"}
               </p>
             </Modal.Body>
-            {!issueModalData.isAttended && (
+            {!issueModalData?.isAttended && (
               <Modal.Footer
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
@@ -219,15 +225,15 @@ function AdminIssues() {
           </Modal>
         </section>
         {/* Resolved issues */}
-        <h5>Resolved Issues</h5>
-        <section className="active-issues-section">
-          <div className="active-issues-container">
+        <h5 style={{ fontWeight: "bold" }}>Resolved Issues</h5>
+        <section className="resolved-issues-section">
+          <div className={styles["resolved-issues-container"]}>
             {resolvedIssues?.length < 1 && (
               <p>No resolved issue, checkout active issues</p>
             )}
             {resolvedIssues?.map((issue, idx) => {
               return (
-                <div key={idx} className="card issue-card">
+                <div key={idx} className={`card ${styles['issue-card']}`}>
                   <div className="card-body">
                     <div className="d-flex justify-content-between">
                       <Badge bg="success">Resolved</Badge>
@@ -276,7 +282,7 @@ function AdminIssues() {
                       href="#"
                       className="btn btn-primary"
                       onClick={() => {
-                        handleIssueModal(idx);
+                        handleIssueModal(idx,0);
                       }}
                     >
                       View Issue
