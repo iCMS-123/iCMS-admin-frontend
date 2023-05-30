@@ -388,6 +388,7 @@ function AdminDashboard() {
                                     <FaAsterisk style={{ color: 'red', fontSize: '0.5rem', marginLeft: '10px' }} />
                                 </Form.Label>
                                 <Form.Select id="selectBranch" onChange={(e) => { setBranchName(e.target.value) }}>
+                                    <option value=''>Choose Branch</option>
                                     <option value='it'>Information Technology</option>
                                     <option value='cse'>Computer Science Engineering</option>
                                     <option value='ce'>Civil Engineering</option>
