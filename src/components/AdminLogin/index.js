@@ -76,7 +76,7 @@ function AdminLogin() {
                 <Form onSubmit={submitLogin}>
                     <Form.Group className="mb-3" controlId="formBasicPasscode">
                         <Form.Label>Passcode</Form.Label>
-                        <Form.Control type="passcode" placeholder="Enter pass code" value={passcode}
+                        <Form.Control type="password" placeholder="Enter pass code" value={passcode}
 								required
 								onChange={(e) => {
 									setpasscode(e.target.value);
